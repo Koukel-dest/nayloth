@@ -1,0 +1,54 @@
+.sidebar {
+    width: 37vh;
+    height: 100vh;
+    background-color: 
+    #ffffff
+
+
+    ; /* Fond blanc comme sur l'image */
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column; /* Aligne les sous-blocs verticalement */
+    border-right: 1vh solid #000080 /*temp
+    ; /* Trait très fin à droite */
+}
+
+/* Le bloc bleu ciel du haut */
+.sidebar-top-block {
+    height: 10vh; /* Même hauteur que la topbar pour être aligné */
+    background-color: #82C8E5
+
+    ; /* Bleu ciel de ta maquette */
+    width: 100%;
+}
+
+/* La zone centrale qui prend tout l'espace restant */
+.sidebar-content {
+    flex-grow: 1; /* Dit à ce bloc de "manger" tout l'espace vide */
+}
+
+/* Le bloc du bas pour l'utilisateur */
+.sidebar-bottom-block {
+    height: 10vh;
+    border-top: 1px solid #0374e6; /* Ligne de séparation en haut */
+    width: 100%;
+}
+
+.page-top {
+    position: fixed;
+    top: 0;
+    height: 10vh;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.page {
+    position: fixed;
+    display: flex;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background-color: #000080;
+}
