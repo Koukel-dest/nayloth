@@ -1,12 +1,11 @@
-CREATE TABLE `utilisateur` (
+CREATE TABLE `user` (
     `id_user` CHAR(36) NOT NULL,
     `prenom` VARCHAR(100) NOT NULL,
     `nom` VARCHAR(100) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `pwd` CHAR(60) NOT NULL,
     `u_role` ENUM('admin', 'manager', 'agent') NOT NULL,
-    PRIMARY KEY (`id_user`),
-    UNIQUE (`email`)
+    PRIMARY KEY (`id_user`)
 ) CHARSET = utf8mb4;
 
 CREATE TABLE `client` (
@@ -21,10 +20,13 @@ CREATE TABLE `client` (
 CREATE TABLE `contrat` (
     `id_contrat` CHAR(36) NOT NULL,
     `titre` VARCHAR(255) NOT NULL,
-    `statut` ENUM('ouvert', 'clos') NOT NULL,
+    `statut_contrat` ENUM('ouvert', 'clos') NOT NULL,
     `quota_agents` INT NOT NULL,
     `date_debut` DATE NOT NULL,
     `date_fin` DATE NOT NULL,
+    `client_id` CHAR(36) NOT NULL,
+    `admin_id` CHAR(36) NOT NULL,
+    `manager_id` CHAR(36) NOT NULL,
     PRIMARY KEY (`id_contrat`)
 ) CHARSET = utf8mb4;
 
@@ -37,6 +39,9 @@ CREATE TABLE `affectation` (
         'terminee',
         'suspendue'
     ) NOT NULL,
+    `contrat_id` CHAR(36) NOT NULL,
+    `agent_id` CHAR(36) NOT NULL,
+    `manager_id` CHAR(36) NOT NULL,
     PRIMARY KEY (`id_affectation`)
 ) CHARSET = utf8mb4;
 
@@ -55,18 +60,21 @@ CREATE TABLE `agent_competence` (
         'intermediaire',
         'expert'
     ) NOT NULL,
+    `agent_id` CHAR(36) NOT NULL,
+    `competence_id` CHAR(36) NOT NULL,
     PRIMARY KEY (`id_agent_competence`)
 ) CHARSET = utf8mb4;
 
 CREATE TABLE `devis` (
     `id_devis` CHAR(36) NOT NULL,
     `montant_ht` DECIMAL(10, 2) NOT NULL,
-    `statut` ENUM(
+    `statut_devis` ENUM(
         'en_attente',
         'accepte',
         'refuse'
     ) NOT NULL,
     `cree_le` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `contrat_id` CHAR(36),
     PRIMARY KEY (`id_devis`)
 ) CHARSET = utf8mb4;
 
@@ -79,6 +87,7 @@ CREATE TABLE `facture` (
         'payee',
         'retard'
     ) NOT NULL,
+    `contrat_id` CHAR(36) NOT NULL,
     PRIMARY KEY (`id_facture`)
 ) CHARSET = utf8mb4;
 
@@ -86,5 +95,6 @@ CREATE TABLE `notification` (
     `id_notification` CHAR(36) NOT NULL,
     `message` TEXT NOT NULL,
     `cree_le` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `user_id` CHAR(36) NOT NULL,
     PRIMARY KEY (`id_notification`)
 ) CHARSET = utf8mb4;
