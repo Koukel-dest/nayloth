@@ -9,9 +9,10 @@
 </head>
 
 <body>
-    <?php include './sidebar.php'; ?>
-    
+    <?php include './base.php'; ?>
+
     <main class="center-page">
     </main>
-</body>     
+</body>
+
 </html>
