@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,7 @@
 </head>
 
 <body>
-    <?php include './base.php'; ?>
-
-    <main class="center-page">
-    </main>
+    <?php include './page_top.php'; ?><?php include './sidebar_top_block.php'; ?><?php include './sidebar_content.php'; ?><?php include './sidebar_bottom_block.php'; ?><?php include './center_page.php'; ?>
 </body>
 
 </html>
