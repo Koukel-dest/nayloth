@@ -20,10 +20,10 @@ CREATE TABLE `client` (
 CREATE TABLE `contrat` (
     `id_contrat` CHAR(36) NOT NULL,
     `titre` VARCHAR(255) NOT NULL,
-    `statut_contrat` ENUM('ouvert', 'clos') NOT NULL,
+    `statut_contrat` ENUM('en_attente','actif','clos','annule') NOT NULL,
     `quota_agents` INT NOT NULL,
     `date_debut` DATE NOT NULL,
-    `date_fin` DATE NOT NULL,
+    `date_fin` DATE,
     `client_id` CHAR(36) NOT NULL,
     `admin_id` CHAR(36) NOT NULL,
     `manager_id` CHAR(36) NOT NULL,
@@ -55,11 +55,6 @@ CREATE TABLE `competence` (
 
 CREATE TABLE `agent_competence` (
     `id_agent_competence` CHAR(36) NOT NULL,
-    `niveau` ENUM(
-        'debutant',
-        'intermediaire',
-        'expert'
-    ) NOT NULL,
     `agent_id` CHAR(36) NOT NULL,
     `competence_id` CHAR(36) NOT NULL,
     PRIMARY KEY (`id_agent_competence`)
