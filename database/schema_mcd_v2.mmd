@@ -37,7 +37,7 @@ UTILISATEUR {
         char(36) admin_id FK
         char(36) manager_id FK
         varchar(255) titre
-        enum statut_contrat
+        enum statut_contrat "en attente|actif|clos|annule"
         integer quota_agents
         date date_debut
         date date_fin
@@ -50,7 +50,7 @@ UTILISATEUR {
         char(36) manager_id FK
         date date_debut
         date date_fin
-        enum statut_affectation
+        enum statut_affectation "active|terminee|suspendue"
     }
 
     COMPETENCE {
@@ -63,14 +63,13 @@ UTILISATEUR {
         char(36) id_agent_competence PK
         char(36) agent_id FK
         char(36) competence_id FK
-        enum niveau
     }
 
     DEVIS {
         char(36) id_devis PK
         char(36) contrat_id FK
         decimal(10_2) montant_ht
-        enum statut
+        enum statut "en_attente|accepte|refuse"
         timestamp cree_le
     }
 
