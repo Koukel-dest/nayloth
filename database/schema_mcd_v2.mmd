@@ -1,0 +1,89 @@
+---
+title
+---
+
+erDiagram
+
+COMPETENCE||--|{AGENT_COMPETENCE:detenu_par
+UTILISATEUR||--o{AGENT_COMPETENCE:agent
+CLIENT||--o{CONTRAT:signe
+CONTRAT||--|{AFFECTATION:necessite
+UTILISATEUR||--o{CONTRAT:creer_admin
+UTILISATEUR||--o{CONTRAT:selectionner_manager
+CONTRAT||--|{DEVIS:precede
+CONTRAT||--o{FACTURE:genere
+UTILISATEUR||--o{AFFECTATION:agent_est_affecter
+UTILISATEUR||--o{AFFECTATION:manager_affecte_agent
+UTILISATEUR||--o{NOTIFICATION:recoit_manager_et_agent
+
+UTILISATEUR {
+        char(36) id_user PK
+        varchar(100) prenom
+        varchar(100) nom
+        varchar(255) email
+        char(60) pwd
+        enum u_role
+    }
+
+    CLIENT {
+        char(36) id_client PK
+        char(14) siret
+        varchar(255) contact_email
+    }
+
+    CONTRAT {
+        char(36) id_contrat PK
+        char(36) client_id FK
+        char(36) admin_id FK
+        char(36) manager_id FK
+        varchar(255) titre
+        enum statut_contrat "en attente|actif|clos|annule"
+        integer quota_agents
+        date date_debut
+        date date_fin
+    }
+
+    AFFECTATION {
+        char(36) id_affectation PK
+        char(36) contrat_id FK
+        char(36) agent_id FK
+        char(36) manager_id FK
+        date date_debut
+        date date_fin
+        enum statut_affectation "active|terminee|suspendue"
+    }
+
+    COMPETENCE {
+        char(36) id_competence PK
+        varchar(100) nom
+        text description
+    }
+
+    AGENT_COMPETENCE {
+        char(36) id_agent_competence PK
+        char(36) agent_id FK
+        char(36) competence_id FK
+    }
+
+    DEVIS {
+        char(36) id_devis PK
+        char(36) contrat_id FK
+        decimal(10_2) montant_ht
+        enum statut "en_attente|accepte|refuse"
+        timestamp cree_le
+    }
+
+    FACTURE {
+        char(36) id_facture PK
+        char(36) contrat_id FK
+        decimal(10_2) montant_ttc
+        date date_echeance
+        enum statut_paiement
+    }
+
+    NOTIFICATION {
+        char(36) id_notification PK
+        char(36) user_id FK
+        text message
+        timestamp cree_le
+    }
