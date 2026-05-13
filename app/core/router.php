@@ -12,7 +12,7 @@ class Router
     public function dispatch(): void
     {
         $method = $_SERVER['REQUEST_METHOD'];
-        $uri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri = str_replace('/NAYLOTH/public', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
         $uri = rtrim($uri, '/') ?: '/';
 
