@@ -1,3 +1,6 @@
+CREATE DATABASE `nayloth`;
+USE `nayloth`;
+
 CREATE TABLE `user` (
     `id_user` CHAR(36) NOT NULL,
     `prenom` VARCHAR(100) NOT NULL,
