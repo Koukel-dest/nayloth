@@ -17,13 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['pwd'
         $_SESSION['user_prenom'] = $user['prenom'];
 
         if ($user['u_role'] === 'admin') {
-            header('Location: /NAYLOTH/public/dashboard/admin');
+            header('Location: /NAYLOTH/public/admin');
             exit;
         } elseif ($user['u_role'] === 'manager') {
-            header('Location: /NAYLOTH/public/dashboard/manager');
+            header('Location: /NAYLOTH/public/manager');
             exit;
         } elseif ($user['u_role'] === 'agent') {
-            header('Location: /NAYLOTH/public/dashboard/agent');
+            header('Location: /NAYLOTH/public/agent');
             exit;
         }
     }

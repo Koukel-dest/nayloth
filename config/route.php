@@ -5,7 +5,10 @@
 $routes = [
 
     'GET' => [
-               '/login' => 'AuthController.php'
+               '/login' => 'AuthController.php',
+                       '/admin'   => 'DashboardController.php',
+        '/manager' => 'DashboardController.php',
+        '/agent'   => 'DashboardController.php',
     ],
 
     'POST' => [
