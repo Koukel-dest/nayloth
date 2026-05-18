@@ -11,7 +11,7 @@
     <?php unset($_SESSION['erreur']); ?>
 <?php endif; ?>
 
-<form method="POST" action="/login">
+<form method="POST" action="/NAYLOTH/public/login">
     <label>Email</label>
     <input type="email" name="email">
 

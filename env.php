@@ -1,4 +1,4 @@
 <?php
 $db_user     = "root";
 $db_password = "";
-$db_name     = "NAYLOTH";
+$db_name = "nayloth";

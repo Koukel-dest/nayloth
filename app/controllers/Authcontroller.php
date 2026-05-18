@@ -7,9 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['pwd'
     $email = $_POST['email'];
     $pwd   = $_POST['pwd'];
 
-    
     $user = findUserByEmail($email);
-
 
     if ($user && password_verify($pwd, $user['pwd'])) {
 
@@ -19,19 +17,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['pwd'
         $_SESSION['user_prenom'] = $user['prenom'];
 
         if ($user['u_role'] === 'admin') {
-            header('Location: /dashboard/admin');
+            header('Location: /NAYLOTH/public/dashboard/admin');
             exit;
         } elseif ($user['u_role'] === 'manager') {
-            header('Location: /dashboard/manager');
+            header('Location: /NAYLOTH/public/dashboard/manager');
             exit;
         } elseif ($user['u_role'] === 'agent') {
-            header('Location: /dashboard/agent');
+            header('Location: /NAYLOTH/public/dashboard/agent');
             exit;
         }
-
     }
 
     $_SESSION['erreur'] = "Email ou mot de passe incorrect";
-    header('Location: /authviews');
+    header('Location: /NAYLOTH/public/login');
     exit;
+
+} else {
+  
+    require_once __DIR__ . '/../views/authviews.php';
 }
