@@ -1,0 +1,1 @@
+<?php include './page_top.php'; ?><?php include './sidebar_top_block.php'; ?><?php include './sidebar_content.php'; ?><?php include './sidebar_bottom_block.php'; ?><?php include './center_page.php'; ?>
