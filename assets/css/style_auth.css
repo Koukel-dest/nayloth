@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #ffffff;
+  color: #111111;
+  height: 100vh;
+  display: flex;
+}
+
+/* ─── LAYOUT ─── */
+.page {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* ─── PANNEAU GAUCHE ─── */
+.panel-left {
+  background: #82C8E5;
+  width: 400px;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 44px;
+}
+
+.brand-logo {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.brand-tagline {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.panel-center {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.panel-center h2 {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ─── PROFILS ─── */
+.profiles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-item {
+  background: rgba(255, 255, 255, 0.15);
+  border: 0.5px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.profile-icon {
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.profile-text h4 {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.profile-text p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.panel-footer {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11px;
+  font-weight: 300;
+}
+
+/* ─── PANNEAU DROIT ─── */
+.panel-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background: #ffffff;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 360px;
+}
+
+.login-box h1 {
+  font-size: 22px;
+  font-weight: 300;
+  color: #111111;
+  margin-bottom: 6px;
+}
+
+.login-subtitle {
+  font-size: 13px;
+  color: #aaaaaa;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+/* ─── SÉLECTEUR DE RÔLE ─── */
+.role-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #777777;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.role-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.role-btn {
+  flex: 1;
+  height: 36px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  color: #888888;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.role-btn:hover {
+  border-color: #82C8E5;
+  color: #1a7a9e;
+}
+
+.role-btn.active {
+  background: #EAF6FC;
+  border-color: #82C8E5;
+  color: #1a7a9e;
+  font-weight: 500;
+}
+
+/* ─── CHAMPS ─── */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #777777;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 42px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 300;
+  color: #111111;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #82C8E5;
+  box-shadow: 0 0 0 3px rgba(130, 200, 229, 0.14);
+}
+
+.form-group input::placeholder {
+  color: #cccccc;
+  font-weight: 300;
+}
+
+/* ─── MOT DE PASSE OUBLIÉ ─── */
+.forgot {
+  text-align: right;
+  margin-top: 6px;
+}
+
+.forgot a {
+  font-size: 12px;
+  color: #bbbbbb;
+  text-decoration: none;
+}
+
+.forgot a:hover {
+  color: #000080;
+}
+
+/* ─── SÉPARATEUR ─── */
+.divider {
+  height: 0.5px;
+  background: #ebebeb;
+  margin: 22px 0;
+}
+
+/* ─── BOUTON CONNEXION ─── */
+.btn-login {
+  width: 100%;
+  height: 44px;
+  background: #000080;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s;
+}
+
+.btn-login:hover {
+  opacity: 0.85;
+}
