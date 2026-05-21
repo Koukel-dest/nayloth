@@ -14,6 +14,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `client` (
     `id_client` CHAR(36) NOT NULL,
+    `nom` VARCHAR(255) NOT NULL,
     `siret` CHAR(14) NOT NULL,
     `contact_email` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id_client`),
