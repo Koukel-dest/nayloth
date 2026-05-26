@@ -2,7 +2,6 @@ DROP DATABASE IF EXISTS NAYLOTH;
 CREATE DATABASE NAYLOTH;
 USE NAYLOTH;
 
-
 CREATE TABLE `user` (
     `id_user` CHAR(36) NOT NULL,
     `prenom` VARCHAR(100) NOT NULL,
@@ -15,6 +14,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `client` (
     `id_client` CHAR(36) NOT NULL,
+    `nom` VARCHAR(255) NOT NULL,
     `siret` CHAR(14) NOT NULL,
     `contact_email` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id_client`),
