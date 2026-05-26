@@ -29,10 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['pwd'
     }
 
     $_SESSION['erreur'] = "Email ou mot de passe incorrect";
-    header('Location: /NAYLOTH/public/login');
+    header('Location: /NAYLOTH/public/nayloth');
     exit;
 
 } else {
   
     require_once __DIR__ . '/../views/authviews.php';
+
 }

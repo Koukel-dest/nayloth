@@ -9,6 +9,8 @@ $routes = [
                        '/admin'   => 'DashboardController.php',
         '/manager' => 'DashboardController.php',
         '/agent'   => 'DashboardController.php',
+        '/agents/ajouter' => 'add_agent.php',
+        '/Agents' => 'list_agent.php',
     ],
 
     'POST' => [
