@@ -5,14 +5,14 @@
 $routes = [
 
     'GET' => [
-               '/login' => 'AuthController.php',
+               '/nayloth' => 'AuthController.php',
                        '/admin'   => 'DashboardController.php',
         '/manager' => 'DashboardController.php',
         '/agent'   => 'DashboardController.php',
     ],
 
     'POST' => [
-        '/login' => 'AuthController.php',
+        '/nayloth' => 'AuthController.php',
     ],
 
 ];

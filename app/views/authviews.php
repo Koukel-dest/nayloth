@@ -9,7 +9,7 @@
 <body>
 <div class="page">
 
-  <!-- PANNEAU GAUCHE -->
+
   <div class="panel-left">
     <div>
       <div class="brand-logo">NAYLOTH</div>
@@ -52,7 +52,6 @@
     <div class="panel-footer">Usage interne uniquement — Projet Nayloth 2025</div>
   </div>
 
-  <!-- PANNEAU DROIT -->
   <div class="panel-right">
     <div class="login-box">
 
@@ -64,7 +63,7 @@
         <?php unset($_SESSION['erreur']); ?>
       <?php endif; ?>
 
-      <form method="POST" action="/NAYLOTH/public/login">
+      <form method="POST" action="/NAYLOTH/public/nayloth">
 
         <div class="form-group">
           <label>Adresse e-mail</label>
