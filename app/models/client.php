@@ -33,3 +33,25 @@ function createClient ($nom, $siret, $contact_email){
         ':contact_email' => $contact_email
     ]);
 }
+
+function updateClient ($id_client, $nom, $siret, $contact_email){
+    global $db;
+    $stmt = $db->prepare("UPDATE `client` 
+        SET `nom` = :nom,
+        `siret` = :siret,
+        `contact_email` = :contact_email
+        WHERE `id_client` = :id_client;
+    ");
+    $stmt->execute([
+        ':id_client' => $id_client,
+        ':nom' => $nom, 
+        ':siret' => $siret, 
+        ':contact_email' => $contact_email
+    ]);
+}
+
+function deleteClient ($id_client){
+    global $db;
+    $stmt = $db->prepare("DELETE FROM `client` WHERE `id_client` = :id_client");
+    $stmt->execute([':id_client' => $id_client]);
+}
