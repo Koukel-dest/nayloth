@@ -22,6 +22,15 @@ CREATE TABLE `client` (
     UNIQUE (`contact_email`)
 ) CHARSET = utf8mb4;
 
+CREATE TABLE `agent` (
+    `id_agent` CHAR(36) NOT NULL,
+    `user_id` CHAR(36) NOT NULL,
+    `telephone` VARCHAR(20),
+    `date_entree` DATE,
+    `notes` TEXT,
+    PRIMARY KEY (`id_agent`)
+) CHARSET = utf8mb4;
+
 CREATE TABLE `contrat` (
     `id_contrat` CHAR(36) NOT NULL,
     `titre` VARCHAR(255) NOT NULL,
