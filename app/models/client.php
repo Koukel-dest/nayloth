@@ -3,7 +3,7 @@ require_once __DIR__ . "/db_connect.php";
 
 function getAllClients (){
     global $db;
-    $stmt = $db->query("SELECT `id_client`, `nom` FROM client");
+    $stmt = $db->query("SELECT `id_client`, `nom`, `siret`, `contact_email` FROM client");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
