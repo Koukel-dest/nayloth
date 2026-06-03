@@ -390,3 +390,269 @@ body {
   overflow-y: auto;
   background: #F9FAFB;
 }
+
+/* ─── LISTE AGENTS ─── */
+.list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #111111;
+}
+
+.list-subtitle {
+  font-size: 13px;
+  color: #888888;
+  font-weight: 300;
+  margin-top: 4px;
+}
+
+.list-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.filter-search {
+  height: 36px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  width: 220px;
+}
+
+.filter-select {
+  height: 36px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+.list-card {
+  background: #ffffff;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 8px;
+}
+
+.list-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 0.5px solid #ebebeb;
+}
+
+.list-card-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.list-card-count {
+  font-size: 12px;
+  color: #888888;
+}
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.list-table thead tr {
+  border-bottom: 0.5px solid #ebebeb;
+}
+
+.list-table th {
+  padding: 12px 24px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+.list-table td {
+  padding: 16px 24px;
+  font-size: 13px;
+  border-bottom: 0.5px solid #f0f0f0;
+}
+
+.list-table tr:last-child td {
+  border-bottom: none;
+}
+
+.agent-name {
+  font-weight: 500;
+  color: #111111;
+}
+
+.agent-email {
+  color: #888888;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #555555;
+  margin-right: 4px;
+}
+
+.badge-dispo {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  background: #EAF6FC;
+  color: #1a7a9e;
+}
+
+.badge-assigned {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.btn-voir {
+  padding: 6px 14px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #555555;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-voir:hover {
+  border-color: #82C8E5;
+  color: #1a7a9e;
+}
+
+/* ─── FORMULAIRE AGENT ─── */
+.form-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 900px;
+}
+
+.form-section {
+  background: #ffffff;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #777777;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  height: 42px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111111;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group textarea {
+  height: 100px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #82C8E5;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn-cancel {
+  height: 40px;
+  padding: 0 20px;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #555555;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  border-color: #82C8E5;
+  color: #1a7a9e;
+}
+
+.form-error {
+  color: #dc2626;
+  font-size: 13px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 0.5px solid #fca5a5;
+  border-radius: 4px;
+}

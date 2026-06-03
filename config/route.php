@@ -9,12 +9,13 @@ $routes = [
                        '/admin'   => 'DashboardController.php',
         '/manager' => 'DashboardController.php',
         '/agent'   => 'DashboardController.php',
-        '/agents/ajouter' => 'add_agent.php',
-        '/Agents' => 'list_agent.php',
+        '/ajouter_agent' => 'add_agent.php',
+        '/Agents' => 'read_agent.php',
     ],
 
     'POST' => [
         '/nayloth' => 'AuthController.php',
+        '/ajouter_agent' => 'add_agent.php',
     ],
 
 ];
