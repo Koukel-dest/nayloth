@@ -19,33 +19,52 @@ elseif($method === 'GET' && $uri === '/admin/clients/create'){
     require_once __DIR__ . '/../views/clients_create.php';
 }
 elseif($method === 'POST' && $uri === '/admin/clients/create'){
-    $nom = $_POST['nom'];
-    $siret = $_POST['siret'];
-    $contact_email = $_POST['contact_email'];
-    createClient($nom, $siret, $contact_email);
-    header('Location: /NAYLOTH/public/admin/clients');
-    exit;
+    if(empty($_POST['nom']) || empty($_POST['siret']) || empty($_POST['contact_email'])){
+        $erreur = 'Tous les champs sont obligatoires.';
+        require_once __DIR__ . '/../views/clients_create.php';
+    } else{
+        $nom = $_POST['nom'];
+        $siret = $_POST['siret'];
+        $contact_email = $_POST['contact_email'];
+        createClient($nom, $siret, $contact_email);
+        header('Location: /NAYLOTH/public/admin/clients');
+        exit;
+    }
 }
 
 // client specifique
 elseif($method === 'GET' && $uri === '/admin/clients/show'){
     $client = getClientById ($_GET['id']);
+    if(!$client){
+        header('Location: /NAYLOTH/public/admin/clients');
+        exit;
+    }
     require_once __DIR__ . '/../views/clients_show.php';
 }
 
 // edit client
 elseif($method === 'GET' && $uri === '/admin/clients/edit'){
     $client = getClientById ($_GET['id']);
+    if(!$client){
+        header('Location: /NAYLOTH/public/admin/clients');
+        exit;
+    }
     require_once __DIR__ . '/../views/clients_edit.php';
 }
 elseif($method === 'POST' && $uri === '/admin/clients/edit'){
-    $id_client = $_POST['id_client'];
-    $nom = $_POST['nom'];
-    $siret = $_POST['siret'];
-    $contact_email = $_POST['contact_email'];
-    updateClient ($id_client, $nom, $siret, $contact_email);
-    header('Location: /NAYLOTH/public/admin/clients');
-    exit;
+    if(empty($_POST['nom']) || empty($_POST['siret']) || empty($_POST['contact_email'])){
+        $erreur = 'Tous les champs sont obligatoires.';
+        $client = getClientById($_POST['id_client']);
+        require_once __DIR__ . '/../views/clients_edit.php';
+    } else{
+        $id_client = $_POST['id_client'];
+        $nom = $_POST['nom'];
+        $siret = $_POST['siret'];
+        $contact_email = $_POST['contact_email'];
+        updateClient ($id_client, $nom, $siret, $contact_email);
+        header('Location: /NAYLOTH/public/admin/clients');
+        exit;
+    }
 }
 
 // delete client
