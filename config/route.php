@@ -15,6 +15,8 @@ $routes = [
         '/admin/clients/create' => 'clientController.php',
         '/admin/clients/show'   => 'clientController.php',
         '/admin/clients/edit'   => 'clientController.php',
+        '/ajouter_agent' => 'add_agent.php',
+        '/Agents' => 'read_agent.php',
     ],
 
     'POST' => [
@@ -22,6 +24,7 @@ $routes = [
         '/admin/clients/create' => 'clientController.php',
         '/admin/clients/edit'   => 'clientController.php',
         '/admin/clients/delete' => 'clientController.php',
+        '/ajouter_agent' => 'add_agent.php',
     ],
 
 ];
