@@ -13,17 +13,20 @@
   </div>
 
   <div class="list-filters">
-    <input type="text" class="filter-search" placeholder="Rechercher un agent..." />
+    <form action="/NAYLOTH/public/Agents" method="get" class="search-form">
+      <input type="text" name="q" class="filter-search" placeholder="Rechercher un agent..." value="<?= htmlspecialchars($searchTerm ?? '') ?>" />
+      <select name="competence" class="filter-select">
+        <option value="">Toutes compétences</option>
+        <?php foreach ($competences as $comp): ?>
+          <option value="<?= htmlspecialchars($comp['nom']) ?>" <?= isset($competenceTerm) && $competenceTerm === $comp['nom'] ? 'selected' : '' ?>><?= htmlspecialchars($comp['nom']) ?></option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit" class="btn-primary">Rechercher</button>
+    </form>
     <select class="filter-select">
       <option>Tous les statuts</option>
       <option>Disponible</option>
       <option>Affecté</option>
-    </select>
-    <select class="filter-select">
-      <option>Toutes compétences</option>
-      <?php foreach ($competences as $comp): ?>
-        <option><?= htmlspecialchars($comp['nom']) ?></option>
-      <?php endforeach; ?>
     </select>
   </div>
 
@@ -59,7 +62,7 @@
             </span>
           </td>
           <td>
-            <a href="/NAYLOTH/public/agent/<?= $agent['id_user'] ?>" class="btn-voir">Voir</a>
+            <a href="/NAYLOTH/public/profil_agent?id=<?= $agent['id_user'] ?>" class="btn-voir">Voir</a>
           </td>
         </tr>
         <?php endforeach; ?>

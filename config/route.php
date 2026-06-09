@@ -11,6 +11,8 @@ $routes = [
         '/agent'   => 'DashboardController.php',
         '/ajouter_agent' => 'add_agent.php',
         '/Agents' => 'read_agent.php',
+        '/profil_agent' => 'profil_agent.php',
+        '/delete_agent' => 'delete_agent.php',
     ],
 
     'POST' => [
