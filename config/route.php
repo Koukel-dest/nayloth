@@ -13,6 +13,7 @@ $routes = [
         '/Agents' => 'read_agent.php',
         '/profil_agent' => 'profil_agent.php',
         '/delete_agent' => 'delete_agent.php',
+        '/logout' => 'deconnexion.php',
     ],
 
     'POST' => [
