@@ -2,6 +2,7 @@
 
 -- USERS (3 de chaque rôle)
 INSERT INTO `user` VALUES
+('550e8400-e29b-41d4-a716-446655439999', 'MOI', 'all', 'moi@test.com', '$2y$10$TcSkJsjCThsntOFt.8vkDet1t6CgDF/7i4D5NGfBEl1znDaICwMYm', 'admin'),
 ('550e8400-e29b-41d4-a716-446655440000', 'Alice', 'Admin', 'alice@test.com', '$2y$10$abcdefghijklmnopqrstuuVwxyz0123456789abcdefghijklmnop', 'admin'),
 ('550e8400-e29b-41d4-a716-446655440001', 'Bernard', 'Admin', 'bernard@test.com', '$2y$10$abcdefghijklmnopqrstuuVwxyz0123456789abcdefghijklmnop', 'admin'),
 ('550e8400-e29b-41d4-a716-446655440002', 'Claire', 'Admin', 'claire@test.com', '$2y$10$abcdefghijklmnopqrstuuVwxyz0123456789abcdefghijklmnop', 'admin'),
@@ -13,10 +14,10 @@ INSERT INTO `user` VALUES
 ('550e8400-e29b-41d4-a716-446655440008', 'Iris', 'Agent', 'iris@test.com', '$2y$10$abcdefghijklmnopqrstuuVwxyz0123456789abcdefghijklmnop', 'agent');
 
 -- CLIENT
-INSERT INTO `client` VALUES
-('550e8400-e29b-41d4-a716-446655440009', '12345678901234', 'contact@entreprise-a.com'),
-('550e8400-e29b-41d4-a716-446655440010', '98765432109876', 'contact@entreprise-b.com'),
-('550e8400-e29b-41d4-a716-446655440011', '11111111111111', 'contact@entreprise-c.com');
+INSERT INTO `client` (`id_client`, `nom`, `siret`, `contact_email`) VALUES
+('550e8400-e29b-41d4-a716-446655440009', 'Entreprise A', '12345678901234', 'contact@entreprise-a.com'),
+('550e8400-e29b-41d4-a716-446655440010', 'Entreprise B', '98765432109876', 'contact@entreprise-b.com'),
+('550e8400-e29b-41d4-a716-446655440011', 'Entreprise C', '11111111111111', 'contact@entreprise-c.com');
 
 -- COMPETENCE
 INSERT INTO `competence` (`id_competence`, `nom`, `description`) VALUES

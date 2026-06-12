@@ -1,7 +1,7 @@
 DELIMITER $$
 
 -- contrat -> date_fin : avant d'entrer la date de fin il faut verifier que le contrat est clos (v)
-DROP TRIGGER`tg_contrat_1`;
+DROP TRIGGER IF EXISTS `tg_contrat_1`;
 CREATE TRIGGER `tg_contrat_1`
 BEFORE UPDATE ON `contrat`
 FOR EACH ROW
