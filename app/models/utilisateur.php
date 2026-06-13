@@ -15,3 +15,20 @@ function checkUserRole (string $u_role){ // function permettant de bloquer les a
         exit();
     }
 }
+
+function getManagerById ($id_user){
+    global $db;
+    $stmt = $db->prepare("SELECT `id_user`, `prenom`,
+    `nom`, `u_role` FROM `user` WHERE `id_user` = :id_user
+    AND `u_role` = :u_role");
+    $stmt->execute([':id_user' => $id_user, ':u_role' => 'manager']);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function getAllManager (){
+    global $db;
+    $stmt = $db->prepare("SELECT `id_user`, `prenom`,
+    `nom`, `u_role` FROM `user` WHERE `u_role` = :u_role");
+    $stmt->execute([':u_role' => 'manager']);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

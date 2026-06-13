@@ -50,7 +50,7 @@
   <div class="list-item">
     <div class="item-info">
       <span class="item-meta">Manager responsable</span>
-      <span class="item-title"><?= htmlspecialchars($contrat['manager_prenom'] . ' ' . $contrat['manager_nom']) ?></span>
+      <span class="item-title"><?= htmlspecialchars($manager['prenom'] . ' ' . $manager['nom']) ?></span>
     </div>
   </div>
 

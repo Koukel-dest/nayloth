@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/db_connect.php";
 
+//sert a selectionner tout les devis sur un contrat
 function getAllDevis ($id_contrat){
     global $db;
     $stmt = $db->prepare("SELECT `id_devis`, `montant_ht`, `statut_devis`, `cree_le`, `contrat_id`
