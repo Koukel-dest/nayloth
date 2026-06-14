@@ -107,3 +107,5 @@ CREATE TABLE `notification` (
     `user_id` CHAR(36) NOT NULL,
     PRIMARY KEY (`id_notification`)
 ) CHARSET = utf8mb4;
+
+ALTER TABLE `devis` ADD COLUMN `document_pdf` VARCHAR(255) NULL;

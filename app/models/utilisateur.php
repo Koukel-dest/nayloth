@@ -25,7 +25,7 @@ function getManagerById ($id_user){
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function getAllManager (){
+function getAllManagers (){
     global $db;
     $stmt = $db->prepare("SELECT `id_user`, `prenom`,
     `nom`, `u_role` FROM `user` WHERE `u_role` = :u_role");

@@ -4,7 +4,7 @@ require_once __DIR__ . "/db_connect.php";
 function getAllContrat (){
     global $db;
     $stmt = $db->query("SELECT `id_contrat`, `titre`, `statut_contrat`,
-    client.nom FROM `contrat`
+    `quota_agents`, `date_debut`, client.nom FROM `contrat`
     INNER JOIN `client`
     ON client.id_client = contrat.client_id");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
