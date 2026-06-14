@@ -139,16 +139,15 @@
 
   <div class="main-area">
 
-    <div class="topbar">
-      <div class="topbar-title">Tableau de bord</div>
-      <div class="topbar-actions">
-        <?php if ($_SESSION['user_role'] === 'admin'): ?>
-          <a href="/NAYLOTH/public/ajouter_agent" class="btn-primary">+ Nouvel agent</a>
-        <?php elseif ($_SESSION['user_role'] === 'manager'): ?>
-          <a href="/NAYLOTH/public/affectations/ajouter" class="btn-primary">+ Nouvelle affectation</a>
-        <?php endif; ?>
-      </div>
-    </div>
+<div class="topbar">
+  <div class="topbar-title"><?= $page_title ?? 'Tableau de bord' ?></div>
+  <div class="topbar-actions">
+    <?php if (isset($page_btn_label) && isset($page_btn_url)): ?>
+      <a href="<?= $page_btn_url ?>" class="btn-primary"><?= $page_btn_label ?></a>
+    <?php endif; ?>
+  </div>
+</div>
+      
 
  
     <div class="content-area">

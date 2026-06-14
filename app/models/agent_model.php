@@ -1,18 +1,37 @@
 <?php
 require_once __DIR__ . "/db_connect.php";
 
-function getAllAgents(): array
+function getAllAgents(string $search = '', string $competence = ''): array
 {
     global $db;
-    $stmt = $db->prepare("
+
+    $base = "
         SELECT u.id_user, u.prenom, u.nom, u.email,
                c.nom AS competence
         FROM `user` u
         LEFT JOIN `agent_competence` ac ON ac.agent_id = u.id_user
         LEFT JOIN `competence` c ON c.id_competence = ac.competence_id
-        WHERE u.u_role = 'agent'
-    ");
-   $stmt->execute();
+        WHERE u.u_role = 'agent'";
+
+    $params = [];
+    $clauses = [];
+
+    if ($search !== '') {
+        $clauses[] = "(u.nom LIKE :term OR u.prenom LIKE :term)";
+        $params[':term'] = '%' . $search . '%';
+    }
+
+    if ($competence !== '') {
+        $clauses[] = "c.nom = :competence";
+        $params[':competence'] = $competence;
+    }
+
+    if (!empty($clauses)) {
+        $base .= ' AND ' . implode(' AND ', $clauses);
+    }
+
+    $stmt = $db->prepare($base);
+    $stmt->execute($params);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -21,14 +40,53 @@ function getAgentById(string $id): array|false
     global $db;
     $stmt = $db->prepare("
         SELECT u.id_user, u.prenom, u.nom, u.email,
+               a.telephone, a.date_entree, a.notes,
                c.nom AS competence
         FROM `user` u
+        LEFT JOIN `agent` a ON a.user_id = u.id_user
         LEFT JOIN `agent_competence` ac ON ac.agent_id = u.id_user
         LEFT JOIN `competence` c ON c.id_competence = ac.competence_id
         WHERE u.id_user = :id
     ");
     $stmt->execute([':id' => $id]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function deleteAgentById(string $id): bool
+{
+    global $db;
+
+    try {
+        $db->beginTransaction();
+
+        $stmt = $db->prepare("DELETE FROM `agent_competence` WHERE `agent_id` = :id");
+        $stmt->execute([':id' => $id]);
+
+        $stmt = $db->prepare("DELETE FROM `affectation` WHERE `agent_id` = :id");
+        $stmt->execute([':id' => $id]);
+
+        $stmt = $db->prepare("DELETE FROM `notification` WHERE `user_id` = :id");
+        $stmt->execute([':id' => $id]);
+
+        $stmt = $db->prepare("DELETE FROM `agent` WHERE `user_id` = :id");
+        $stmt->execute([':id' => $id]);
+
+        $stmt = $db->prepare("DELETE FROM `user` WHERE `id_user` = :id AND `u_role` = 'agent'");
+        $stmt->execute([':id' => $id]);
+
+        if ($stmt->rowCount() === 0) {
+            $db->rollBack();
+            return false;
+        }
+
+        $db->commit();
+        return true;
+    } catch (PDOException $e) {
+        if ($db->inTransaction()) {
+            $db->rollBack();
+        }
+        return false;
+    }
 }
 
 function generateUUID(): string

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              $_POST['notes'] ?? '', 
              $competences)) {
         $_SESSION['succes'] = "Agent créé avec succès.";
-        header('Location: /NAYLOTH/public/agents');
+        header('Location: /NAYLOTH/public/Agents');
         exit;
     } else {
         $_SESSION['erreur'] = "Erreur lors de la création de l'agent.";

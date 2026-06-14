@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/../models/agent_model.php';
 
-$raw = getAllAgents();
+$search = trim($_GET['q'] ?? '');
+$competence = trim($_GET['competence'] ?? '');
+$raw = getAllAgents($search, $competence);
 
 $agents = [];
 foreach ($raw as $row) {
@@ -22,4 +24,6 @@ foreach ($raw as $row) {
 }
 
 $competences = getAllCompetences();
+$searchTerm = $search;
+$competenceTerm = $competence;
 require_once __DIR__ . '/../views/list_agent.php';
