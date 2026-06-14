@@ -44,13 +44,14 @@ function createContrat ($titre, $quota_agents, $date_debut, $client_id, $admin_i
     ]);
 }
 
-function updateContrat ($id_contrat, $titre, $statut_contrat, $quota_agents, $date_debut, $client_id, $manager_id){
+function updateContrat ($id_contrat, $titre, $statut_contrat, $quota_agents, $date_debut, $date_fin, $client_id, $manager_id){
     global $db;
     $stmt = $db->prepare("UPDATE `contrat` 
         SET `titre` = :titre,
         `statut_contrat` = :statut_contrat,
         `quota_agents` = :quota_agents,
         `date_debut` = :date_debut,
+        `date_fin` = :date_fin,
         `client_id` = :client_id,
         `manager_id` = :manager_id
         WHERE `id_contrat` = :id_contrat");
@@ -60,6 +61,7 @@ function updateContrat ($id_contrat, $titre, $statut_contrat, $quota_agents, $da
         ':statut_contrat' => $statut_contrat,
         ':quota_agents' => $quota_agents,
         ':date_debut' => $date_debut,
+        ':date_fin' => $date_fin,
         ':client_id' => $client_id,
         ':manager_id' => $manager_id
     ]);

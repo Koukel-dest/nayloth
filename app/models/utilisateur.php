@@ -11,7 +11,7 @@ function findUserByEmail(string $email): array|false {
 
 function checkUserRole (string $u_role){ // function permettant de bloquer les acces si le user n'est pas le bon
     if(!isset($_SESSION['user_role']) || $u_role != $_SESSION['user_role']){
-        header("HTTP/1.1 403 Forbidden");
+        header('Location: /NAYLOTH/public/nayloth');
         exit();
     }
 }

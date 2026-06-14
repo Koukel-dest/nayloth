@@ -43,7 +43,7 @@
   <div class="list-item">
     <div class="item-info">
       <span class="item-meta">Client</span>
-      <span class="item-title"><?= htmlspecialchars($contrat['nom']) ?></span>
+      <span class="item-title"><?= htmlspecialchars($client['nom']) ?></span>
     </div>
   </div>
 

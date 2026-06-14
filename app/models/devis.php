@@ -2,11 +2,11 @@
 require_once __DIR__ . "/db_connect.php";
 
 //sert a selectionner tout les devis sur un contrat
-function getAllDevis ($id_contrat){
+function getAllDevis ($contrat_id){
     global $db;
     $stmt = $db->prepare("SELECT `id_devis`, `montant_ht`, `statut_devis`, `cree_le`, `contrat_id`
-    FROM devis WHERE `id_contrat` = :id_contrat");
-    $stmt->execute([':id_contrat' => $id_contrat]);
+    FROM devis WHERE `contrat_id` = :contrat_id");
+    $stmt->execute([':contrat_id' => $contrat_id]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 

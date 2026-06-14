@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../models/Utilisateur.php';
 require_once __DIR__ . '/../models/contrat.php';
 require_once __DIR__ . '/../models/client.php';
+require_once __DIR__ . '/../models/devis.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = str_replace('/NAYLOTH/public', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
@@ -49,6 +50,7 @@ elseif($method === 'GET' && $uri === '/admin/contrat/show'){
         header('Location: /NAYLOTH/public/admin/contrat');
         exit;
     }
+    $client = getClientById($contrat['client_id']);
     $devis = getAllDevis($_GET['id']);
     $manager = getManagerById($contrat['manager_id']);
     require_once __DIR__ . '/../views/contrats_show.php';
@@ -79,10 +81,13 @@ elseif($method === 'POST' && $uri === '/admin/contrat/edit'){
         $statut_contrat = $_POST['statut_contrat'];
         $quota_agents = $_POST['quota_agents'];
         $date_debut = $_POST['date_debut'];
+        $date_fin = $_POST['date_fin'];
         $client_id = $_POST['client_id'];
         $manager_id = $_POST['manager_id'];
 
-        updateContrat($id_contrat, $titre, $statut_contrat, $quota_agents, $date_debut, $client_id, $manager_id);
+        if($date_fin === ''){ $date_fin = NULL; }
+
+        updateContrat($id_contrat, $titre, $statut_contrat, $quota_agents, $date_debut, $date_fin, $client_id, $manager_id);
         header('Location: /NAYLOTH/public/admin/contrat/show?id=' . $id_contrat);
         exit;
     }

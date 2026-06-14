@@ -23,25 +23,31 @@
       <input type="text" id="titre" name="titre" value="<?= htmlspecialchars($contrat['titre']) ?>" required>
     </div>
 
-    <div class="form-group">
-      <label for="statut_contrat">Statut</label>
-      <select id="statut_contrat" name="statut_contrat" required>
-        <?php foreach (['en_attente', 'actif', 'clos', 'annule'] as $statut): ?>
-          <option value="<?= $statut ?>" <?= $contrat['statut_contrat'] === $statut ? 'selected' : '' ?>>
-            <?= $statut ?>
-          </option>
-        <?php endforeach; ?>
-      </select>
-    </div>
-
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div class="form-group">
+        <label for="statut_contrat">Statut</label>
+        <select id="statut_contrat" name="statut_contrat" required>
+          <?php foreach (['en_attente', 'actif', 'clos', 'annule'] as $statut): ?>
+            <option value="<?= $statut ?>" <?= $contrat['statut_contrat'] === $statut ? 'selected' : '' ?>>
+              <?= $statut ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
       <div class="form-group">
         <label for="quota_agents">Quota agents</label>
         <input type="number" id="quota_agents" name="quota_agents" min="1" value="<?= htmlspecialchars($contrat['quota_agents']) ?>" required>
       </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
       <div class="form-group">
         <label for="date_debut">Date de début</label>
         <input type="date" id="date_debut" name="date_debut" value="<?= htmlspecialchars($contrat['date_debut']) ?>" required>
+      </div>
+      <div class="form-group">
+        <label for="date_fin">Date de fin <span style="color:#999; font-size:12px;">(optionnelle)</span></label>
+        <input type="date" id="date_fin" name="date_fin" value="<?= htmlspecialchars($contrat['date_fin'] ?? '') ?>">
       </div>
     </div>
 
