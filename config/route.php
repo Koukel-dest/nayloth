@@ -19,7 +19,11 @@ $routes = [
         '/Agents' => 'read_agent.php',
         '/profil_agent' => 'profil_agent.php',
         '/delete_agent' => 'delete_agent.php',
+        '/ajouter_affectation' => 'add_affectation.php',
         '/logout' => 'deconnexion.php',
+        '/affectations' => 'read_affectation.php',
+        '/affectation_detail' => 'affectation_detail_contr.php',
+        '/delete_affectation' => 'delete_affectation.php',
     ],
 
     'POST' => [
@@ -28,6 +32,8 @@ $routes = [
         '/admin/clients/edit'   => 'clientController.php',
         '/admin/clients/delete' => 'clientController.php',
         '/ajouter_agent' => 'add_agent.php',
+        '/ajouter_affectation' => 'add_affectation.php',
+        
     ],
 
 ];
