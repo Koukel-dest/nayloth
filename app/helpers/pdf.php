@@ -14,7 +14,7 @@ function generatePdf($html, $filename) {
     $dompdf->render();
 
     $output = $dompdf->output();
-    $dir = __DIR__ . '/../../public/pdfs/';
+    $dir = __DIR__ . '/../../storage/pdfs/';
     if (!is_dir($dir)) {
         mkdir($dir, 0755, true);
     }

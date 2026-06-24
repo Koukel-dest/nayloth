@@ -14,7 +14,7 @@
     <p style="color:#cc3333; font-size:13px; margin-bottom:20px;"><?= htmlspecialchars($erreur) ?></p>
   <?php endif; ?>
 
-  <form method="POST" action="/NAYLOTH/public/admin/contrat/devis/edit" enctype="multipart/form-data">
+  <form method="POST" action="/NAYLOTH/public/admin/contrat/devis/edit">
 
     <input type="hidden" name="id_devis" value="<?= htmlspecialchars($devis['id_devis']) ?>">
     <input type="hidden" name="contrat_id" value="<?= htmlspecialchars($devis['contrat_id']) ?>">
@@ -33,16 +33,6 @@
           </option>
         <?php endforeach; ?>
       </select>
-    </div>
-
-    <div class="form-group">
-      <label for="document_pdf">Document PDF du devis</label>
-      <input type="file" id="document_pdf" name="document_pdf" accept=".pdf">
-      <?php if (!empty($devis['document_pdf'])): ?>
-        <span style="font-size:12px; color:#555; margin-top:6px; display:block;">
-          Fichier actuel : <?= htmlspecialchars(basename($devis['document_pdf'])) ?>
-        </span>
-      <?php endif; ?>
     </div>
 
     <div style="display:flex; gap:12px; margin-top:28px;">

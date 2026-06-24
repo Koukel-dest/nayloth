@@ -18,6 +18,9 @@
     <?php if ($contrat['statut_contrat'] !== 'clos'): ?>
       <a href="/NAYLOTH/public/admin/contrat/edit?id=<?= urlencode($contrat['id_contrat']) ?>" class="btn-primary" style="font-size:14px; display:inline-flex; align-items:center;">Modifier</a>
     <?php endif; ?>
+    <?php if (file_exists(__DIR__ . '/../../storage/pdfs/contrat_' . $contrat['id_contrat'] . '.pdf')): ?>
+      <a href="/NAYLOTH/public/admin/pdf?file=contrat_<?= urlencode($contrat['id_contrat']) ?>.pdf" target="_blank" class="btn-icon" style="display:inline-flex; align-items:center;">Télécharger le contrat PDF</a>
+    <?php endif; ?>
     <a href="/NAYLOTH/public/admin/contrat" class="btn-icon" style="display:inline-flex; align-items:center;">Retour à la liste</a>
   </div>
 </div>
@@ -117,8 +120,11 @@
                 </span>
               </td>
               <td class="agent-email"><?= htmlspecialchars(date('d/m/Y', strtotime($d['cree_le']))) ?></td>
-              <td>
+              <td style="display:flex; gap:8px; align-items:center;">
                 <a href="/NAYLOTH/public/admin/contrat/devis/edit?id=<?= urlencode($d['id_devis']) ?>" class="btn-icon">Modifier</a>
+                <?php if (file_exists(__DIR__ . '/../../storage/pdfs/devis_' . $d['id_devis'] . '.pdf')): ?>
+                  <a href="/NAYLOTH/public/admin/pdf?file=devis_<?= urlencode($d['id_devis']) ?>.pdf" target="_blank" class="btn-icon">PDF</a>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>
