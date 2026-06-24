@@ -36,6 +36,7 @@ function createDevis ($montant_ht, $contrat_id){
         ':statut_devis' => 'en_attente',
         ':contrat_id' => $contrat_id
     ]);
+    return $id;
 }
 
 function updateDevis ($id_devis, $montant_ht, $statut_devis){

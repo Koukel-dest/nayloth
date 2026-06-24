@@ -3,6 +3,8 @@
 require_once __DIR__ . '/../models/Utilisateur.php';
 require_once __DIR__ . '/../models/contrat.php';
 require_once __DIR__ . '/../models/devis.php';
+require_once __DIR__ . '/../models/client.php';
+require_once __DIR__ . '/../helpers/pdf.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = str_replace('/NAYLOTH/public', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
@@ -34,7 +36,14 @@ elseif($method === 'POST' && $uri === '/admin/contrat/devis/create'){
     } else{
         $montant_ht = $_POST['montant_ht'];
 
-        createDevis($montant_ht, $contrat_id);
+        $id_devis = createDevis($montant_ht, $contrat_id);
+        $devis = getDevisById($id_devis);
+        $client = getClientById($contrat['client_id']);
+        ob_start();
+        require_once __DIR__ . '/../templates/devis_pdf.php';
+        $html = ob_get_clean();
+        generatePdf($html, 'devis_' . $id_devis . '.pdf');
+
         header('Location: /NAYLOTH/public/admin/contrat/show?id=' . $contrat_id);
         exit;
     }
@@ -69,6 +78,18 @@ elseif($method === 'POST' && $uri === '/admin/contrat/devis/edit'){
         $contrat_id = $_POST['contrat_id'];
 
         updateDevis($id_devis, $montant_ht, $statut_devis);
+
+        if($statut_devis === 'accepte'){
+            $devis = getDevisById($id_devis);
+            $contrat = getContratById($contrat_id);
+            $client = getClientById($contrat['client_id']);
+            $manager = getManagerById($contrat['manager_id']);
+            ob_start();
+            require_once __DIR__ . '/../templates/contrat_pdf.php';
+            $html = ob_get_clean();
+            generatePdf($html, 'contrat_' . $contrat_id . '.pdf');
+        }
+
         header('Location: /NAYLOTH/public/admin/contrat/show?id=' . $contrat_id);
         exit;
     }
