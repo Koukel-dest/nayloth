@@ -62,6 +62,9 @@ elseif($method === 'GET' && $uri === '/admin/contrat/edit'){
     if(!$contrat){
         header('Location: /NAYLOTH/public/admin/contrat');
         exit;
+    } elseif($contrat['statut_contrat'] === 'annule' || $contrat['statut_contrat'] === 'clos'){
+        header('Location: /NAYLOTH/public/admin/contrat');
+        exit;
     }
     $clients = getAllClients();
     $managers = getAllManagers();
@@ -75,6 +78,9 @@ elseif($method === 'POST' && $uri === '/admin/contrat/edit'){
         $clients = getAllClients();
         $managers = getAllManagers();
         require_once __DIR__ . '/../views/contrats_edit.php';
+    } elseif($contrat['statut_contrat'] === 'annule' || $contrat['statut_contrat'] === 'clos'){
+        header('Location: /NAYLOTH/public/admin/contrat');
+        exit;
     } else{
         $id_contrat = $contrat['id_contrat'];
         $titre = $_POST['titre'];
