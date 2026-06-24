@@ -16,6 +16,7 @@ function sendMail(string $to, string $subject, string $body): bool
         $mail->Port = $smtp_port;
         $mail->SMTPAuth = false;
         $mail->SMTPAutoTLS = false;
+        $mail->CharSet = 'UTF-8';
 
         $mail->setFrom($smtp_from, $smtp_from_name);
         $mail->addAddress($to);

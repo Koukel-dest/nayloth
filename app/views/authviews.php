@@ -73,7 +73,7 @@
         <div class="form-group">
           <label>Mot de passe</label>
           <input type="password" name="pwd" placeholder="••••••••" />
-          <div class="forgot"><a href="#">Mot de passe oublié ?</a></div>
+          <div class="forgot"><a href="/NAYLOTH/public/mot-de-passe-oublie">Mot de passe oublié ?</a></div>
         </div>
 
         <div class="divider"></div>
