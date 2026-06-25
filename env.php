@@ -1,4 +1,3 @@
--- Active: 1776842342878@@127.0.0.1@3306@nayloth
 <?php
 
 $db_user     = "root";
