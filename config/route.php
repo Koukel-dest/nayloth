@@ -21,6 +21,8 @@ $routes = [
         '/delete_agent' => 'delete_agent.php',
         '/logout' => 'deconnexion.php',
         '/missions' => 'missions.php',
+        '/mot-de-passe-oublie' => 'forgot_password.php',
+        '/reinitialiser-mot-de-passe' => 'reset_password.php',
     ],
 
     'POST' => [
@@ -30,6 +32,8 @@ $routes = [
         '/admin/clients/delete' => 'clientController.php',
         '/ajouter_agent' => 'add_agent.php',
         '/missions' => 'missions.php',
+        '/mot-de-passe-oublie' => 'forgot_password.php',
+        '/reinitialiser-mot-de-passe' => 'reset_password.php',
     ],
 
 ];
