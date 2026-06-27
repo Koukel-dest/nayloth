@@ -24,6 +24,9 @@ $routes = [
         '/affectations' => 'read_affectation.php',
         '/affectation_detail' => 'affectation_detail_contr.php',
         '/delete_affectation' => 'delete_affectation.php',
+        '/mot-de-passe-oublie' => 'forgot_password.php',
+        '/reinitialiser-mot-de-passe' => 'reset_password.php',
+        
     ],
 
     'POST' => [
@@ -34,6 +37,8 @@ $routes = [
         '/ajouter_agent' => 'add_agent.php',
         '/ajouter_affectation' => 'add_affectation.php',
         
+        '/mot-de-passe-oublie' => 'forgot_password.php',
+        '/reinitialiser-mot-de-passe' => 'reset_password.php',
     ],
 
 ];

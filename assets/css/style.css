@@ -756,7 +756,7 @@ body {
   color: #aaaaaa;
 }
 
-/* Carte danger */
+
 .profile-card-danger {
   border-color: #fca5a5;
   flex-direction: row;
@@ -818,4 +818,59 @@ body {
   font-weight: 500;
   background: #fff8e1;
   color: #f57f17;
+}
+
+
+.btn-affecter {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #000080;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.btn-affecter:hover {
+  opacity: 0.85;
+}
+
+
+
+.missions-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.mission-stat-card {
+  background: #ffffff;
+  border: 0.5px solid #d8d8d8;
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+.mission-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #777777;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.mission-stat-value {
+  font-size: 32px;
+  font-weight: 300;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.mission-stat-sub {
+  font-size: 12px;
+  color: #aaaaaa;
+  font-weight: 300;
 }
