@@ -20,6 +20,7 @@ $routes = [
         '/profil_agent' => 'profil_agent.php',
         '/delete_agent' => 'delete_agent.php',
         '/logout' => 'deconnexion.php',
+        '/missions' => 'missions.php',
     ],
 
     'POST' => [
@@ -28,6 +29,7 @@ $routes = [
         '/admin/clients/edit'   => 'clientController.php',
         '/admin/clients/delete' => 'clientController.php',
         '/ajouter_agent' => 'add_agent.php',
+        '/missions' => 'missions.php',
     ],
 
 ];
