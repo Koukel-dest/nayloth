@@ -25,12 +25,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $competences = $_POST['competences'] ?? [];
 
-    if (addAgent($prenom, $nom, $email, $pwd, 
-             $_POST['telephone'] ?? '', 
-             $_POST['date_entree'] ?? '', 
-             $_POST['notes'] ?? '', 
+    if (addAgent($prenom, $nom, $email, $pwd,
+             $_POST['telephone'] ?? '',
+             $_POST['date_entree'] ?? '',
+             $_POST['notes'] ?? '',
              $competences)) {
-        $_SESSION['succes'] = "Agent créé avec succès.";
+
+        require_once __DIR__ . '/../models/mailer.php';
+        $sujet = "Bienvenue chez Nayloth - vos identifiants";
+        $corps = "Bonjour $prenom,\n\n"
+               . "Votre compte agent a été créé.\n"
+               . "Email : $email\n"
+               . "Mot de passe : $pwd\n\n"
+               . "Connectez-vous sur la plateforme Nayloth.";
+
+        if (sendMail($email, $sujet, $corps)) {
+            $_SESSION['succes'] = "Agent créé avec succès. Un email avec ses identifiants lui a été envoyé.";
+        } else {
+            $_SESSION['succes'] = "Agent créé avec succès, mais l'email n'a pas pu être envoyé.";
+        }
+
         header('Location: /NAYLOTH/public/Agents');
         exit;
     } else {

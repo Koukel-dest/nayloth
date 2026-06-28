@@ -29,6 +29,8 @@ $routes = [
         '/profil_agent' => 'profil_agent.php',
         '/delete_agent' => 'delete_agent.php',
         '/logout' => 'deconnexion.php',
+        '/mot-de-passe-oublie' => 'forgot_password.php',
+        '/reinitialiser-mot-de-passe' => 'reset_password.php',
     ],
 
     'POST' => [
@@ -43,6 +45,8 @@ $routes = [
         '/admin/contrat/edit' => 'contratController.php',
         '/admin/contrat/devis/create' => 'devisController.php',
         '/admin/contrat/devis/edit' => 'devisController.php',
+        '/mot-de-passe-oublie' => 'forgot_password.php',
+        '/reinitialiser-mot-de-passe' => 'reset_password.php',
     ],
 
 ];
