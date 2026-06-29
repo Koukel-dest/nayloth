@@ -13,6 +13,42 @@ BEGIN
     END IF;
 END$$
 
+-- contrat -> pas de passage en clos si date fin pas definie
+CREATE TRIGGER `tg_contrat_2`
+BEFORE UPDATE ON `contrat`
+FOR EACH ROW
+BEGIN
+    IF (new.date_fin IS NULL)
+    AND (new.statut_contrat = 'clos') THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'tg_contrat_2';
+    END IF;
+END$$
+
+-- contrat -> definition des ordres de passage du statut
+CREATE TRIGGER `tg_contrat_7`
+BEFORE UPDATE ON `contrat`
+FOR EACH ROW
+BEGIN
+    IF ((old.statut_contrat = 'en_attente') 
+    AND (new.statut_contrat = 'clos'))
+
+    OR ((old.statut_contrat = 'actif')
+    AND ((new.statut_contrat = 'en_attente')
+    OR (new.statut_contrat = 'annule')))
+
+    OR ((old.statut_contrat = 'clos')
+    AND new.statut_contrat <> 'clos')
+
+    OR ((old.statut_contrat = 'annule')
+    AND new.statut_contrat <> 'annule')
+
+    THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'tg_contrat_7';
+    END IF;
+END$$
+
 -- devis -> status_devis : si le devis est accepter alors on passe le status du contrat en actif (a)
 CREATE TRIGGER `tg_devis_1`
 AFTER UPDATE ON `devis`
@@ -22,6 +58,25 @@ BEGIN
     THEN UPDATE `contrat`
     SET `statut_contrat` = 'actif'
     WHERE `id_contrat` = new.contrat_id;
+    END IF;
+END$$
+
+-- devis -> que un seul devis accepter par contrat
+CREATE TRIGGER `tg_devis_2`
+BEFORE UPDATE ON `devis`
+FOR EACH ROW
+BEGIN
+    DECLARE dpc_count INT;
+    SELECT COUNT(*) INTO dpc_count
+    FROM devis
+    WHERE `contrat_id` = new.contrat_id
+    AND `statut_devis` = 'accepte';
+
+    IF (dpc_count > 0) AND (new.statut_devis = 'accepte')
+
+    THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'tg_devis_2';
     END IF;
 END$$
 

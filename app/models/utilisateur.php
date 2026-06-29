@@ -17,7 +17,24 @@ function updateUserPassword(string $email, string $hashedPwd): bool {
 
 function checkUserRole (string $u_role){ // function permettant de bloquer les acces si le user n'est pas le bon
     if(!isset($_SESSION['user_role']) || $u_role != $_SESSION['user_role']){
-        header("HTTP/1.1 403 Forbidden");
+        header('Location: /NAYLOTH/public/nayloth');
         exit();
     }
+}
+
+function getManagerById ($id_user){
+    global $db;
+    $stmt = $db->prepare("SELECT `id_user`, `prenom`,
+    `nom`, `u_role` FROM `user` WHERE `id_user` = :id_user
+    AND `u_role` = :u_role");
+    $stmt->execute([':id_user' => $id_user, ':u_role' => 'manager']);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function getAllManagers (){
+    global $db;
+    $stmt = $db->prepare("SELECT `id_user`, `prenom`,
+    `nom`, `u_role` FROM `user` WHERE `u_role` = :u_role");
+    $stmt->execute([':u_role' => 'manager']);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
