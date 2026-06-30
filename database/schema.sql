@@ -51,7 +51,9 @@ CREATE TABLE `affectation` (
     `statut_affectation` ENUM(
         'active',
         'terminee',
-        'suspendue'
+        'suspendue',
+        'en_attente',
+        'refusee'
     ) NOT NULL,
     `contrat_id` CHAR(36) NOT NULL,
     `agent_id` CHAR(36) NOT NULL,

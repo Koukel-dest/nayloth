@@ -52,11 +52,8 @@ require_once __DIR__ . '/layout/header.php';
 
         <div class="form-group">
           <label>Statut</label>
-          <select name="statut">
-            <option value="active">Active</option>
-            <option value="terminee">Terminée</option>
-            <option value="suspendue">Suspendue</option>
-          </select>
+          <div class="form-note">L'affectation sera créée en attente de validation par l'agent.</div>
+          <input type="hidden" name="statut" value="en_attente" />
         </div>
 
       </div>

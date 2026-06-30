@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contrat_id = $_POST['contrat_id'] ?? '';
     $date_debut = $_POST['date_debut'] ?? '';
     $date_fin   = $_POST['date_fin']   ?? '';
-    $statut     = $_POST['statut']     ?? '';
     $manager_id = $_SESSION['user_id'];
+    $statut     = 'en_attente';
 
-    if (empty($agent_id) || empty($contrat_id) || empty($date_debut) || empty($statut)) {
+    if (empty($agent_id) || empty($contrat_id) || empty($date_debut)) {
         $_SESSION['erreur'] = "Tous les champs obligatoires doivent être remplis.";
         header('Location: /NAYLOTH/public/ajouter_affectation');
         exit;
