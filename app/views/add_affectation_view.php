@@ -21,7 +21,7 @@ require_once __DIR__ . '/layout/header.php';
           <select name="agent_id">
             <option value="">-- Sélectionner un agent --</option>
             <?php foreach ($agents as $agent): ?>
-              <option value="<?= $agent['id_user'] ?>">
+              <option value="<?= $agent['id_user'] ?>" <?= (isset($selectedAgentId) && $selectedAgentId == $agent['id_user']) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($agent['nom'] . ' ' . $agent['prenom']) ?>
               </option>
             <?php endforeach; ?>

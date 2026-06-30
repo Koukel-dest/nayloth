@@ -26,6 +26,8 @@ $routes = [
         '/delete_affectation' => 'delete_affectation.php',
         '/mot-de-passe-oublie' => 'forgot_password.php',
         '/reinitialiser-mot-de-passe' => 'reset_password.php',
+        '/agents_disponibles' => 'agent_disponibles.php',
+        '/suivi_missions'     => 'suivi_missions.php',
         
     ],
 

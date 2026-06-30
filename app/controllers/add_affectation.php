@@ -40,6 +40,7 @@ if (!isQuotaDisponible($contrat_id)) {
     }
 
 } else {
+    $selectedAgentId = $_GET['agent_id'] ?? '';
     $agents   = getAllAgentsForSelect();
     $contrats = getAllContratsForSelect();
     require_once __DIR__ . '/../views/add_affectation_view.php';
