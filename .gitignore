@@ -2,3 +2,7 @@ env.php
 /libs/fpdf/
 /vendor/
 /storage/
+bin/
+obj/
+.vs/
+*.user
