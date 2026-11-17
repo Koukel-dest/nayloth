@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Nayloth.Core/Nayloth.Core.csproj" />
+  <Project Path="Nayloth.Data/Nayloth.Data.csproj" />
+  <Project Path="Nayloth.Tests/Nayloth.Tests.csproj" />
+  <Project Path="Nayloth.Web/Nayloth.Web.csproj" />
+</Solution>
